@@ -1,0 +1,29 @@
+# Cloudformation for databases
+Resources:
+  IntegrationEcommerceTable:
+    Type: 'AWS::DynamoDB::Table'
+    DeletionPolicy: Retain
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: pk
+          AttributeType: S
+        - AttributeName: sk
+          AttributeType: S
+        - AttributeName: data
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pk
+          KeyType: "HASH"
+        - AttributeName: sk
+          KeyType: "RANGE"
+      TableName: 'ecommerce-integration'
+      GlobalSecondaryIndexes:
+        - IndexName: gsi_1
+          KeySchema:
+            - AttributeName: sk
+              KeyType: HASH
+            - AttributeName: data
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL

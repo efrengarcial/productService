@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "serverless-jetpack": "^0.10.7"
+  },
+  "dependencies": {
+    "serverless": "^2.51.0",
+    "serverless-single-page-app-plugin": "^1.0.2"
+  }
+}
